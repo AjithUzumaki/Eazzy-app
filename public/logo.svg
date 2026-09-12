@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="96" fill="#141414"/>
+  <!-- house outline -->
+  <path d="M256 96 L400 210 V400 H112 V210 Z" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linejoin="round"/>
+  <!-- lightning bolt accent, gold -->
+  <path d="M276 190 L214 300 H250 L236 380 L318 250 H278 Z" fill="#F5A623"/>
+</svg>
