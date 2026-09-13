@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { services } from "@/lib/data";
 import { useSearchParams, useRouter } from "next/navigation";
 import { getSession } from "@/lib/auth";
@@ -8,6 +8,14 @@ import { getSession } from "@/lib/auth";
 const SLOTS = ["9:00 AM - 11:00 AM", "11:00 AM - 1:00 PM", "2:00 PM - 4:00 PM", "4:00 PM - 6:00 PM"];
 
 export default function BookingPage() {
+  return (
+    <Suspense>
+      <BookingForm />
+    </Suspense>
+  );
+}
+
+function BookingForm() {
   const params = useSearchParams();
   const router = useRouter();
   const serviceId = params.get("service");

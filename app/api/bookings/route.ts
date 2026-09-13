@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createBooking, listBookingsByPhone } from "@/lib/store";
+import { sendNewBookingAlert } from "@/lib/email";
 
 // POST /api/bookings — create a new booking
 export async function POST(req: NextRequest) {
@@ -19,6 +20,8 @@ export async function POST(req: NextRequest) {
     slotTime,
     notes: notes ?? "",
   });
+
+  sendNewBookingAlert(booking);
 
   return NextResponse.json({ booking });
 }

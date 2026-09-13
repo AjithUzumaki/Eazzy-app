@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { services } from "@/lib/data";
 
@@ -11,6 +11,14 @@ interface BookingResponse {
 }
 
 export default function PaymentPage() {
+  return (
+    <Suspense>
+      <PaymentForm />
+    </Suspense>
+  );
+}
+
+function PaymentForm() {
   const params = useSearchParams();
   const router = useRouter();
   const bookingId = params.get("id");
@@ -27,8 +35,6 @@ export default function PaymentPage() {
   async function pay() {
     if (!bookingId) return;
     setPaying(true);
-    // Simulated payment success. Real integration: open Razorpay Checkout here,
-    // and only call this endpoint after the webhook confirms payment server-side.
     await fetch("/api/payments", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
